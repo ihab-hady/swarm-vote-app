@@ -6,7 +6,7 @@
  brew  install --cask vagrant-manager
  vagrant box add ubuntu/xenial64 http://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-vagrant.box
  vagrant up
- #### uncommment below when you have similar machine names, this will make sure to filter by the path where you run the vagrant command
+ #### uncommment below when you have similar machine names, this will make sure to filter by the path from where the code is fired
  #### ex. 'manager' vms names in different location #######
  #pwd=$(pwd) 
  #BOX_ID=$(vagrant global-status | grep manager |grep $pwd |  awk '{print $1}')
