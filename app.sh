@@ -6,9 +6,14 @@
  brew  install --cask vagrant-manager
  vagrant box add ubuntu/xenial64 http://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-vagrant.box
  vagrant up
- OUTPUT= vagrant global-status | grep manager
- vagrant ssh $OUTPUT  -- -t '
- #vagrant ssh 1399da8  -- -t '
+ #### uncommment below when you have similar machine names, this will make sure to filter by the path where you run the vagrant command
+ #### ex. 'manager' vms names in different location #######
+ #pwd=$(pwd) 
+ #BOX_ID=$(vagrant global-status | grep manager |grep $pwd |  awk '{print $1}')
+ ####################
+ 
+ BOX_ID=$(vagrant global-status | grep manager | awk '{print $1}')
+ vagrant ssh $BOX_ID  -- -t '
  git clone https://github.com/jcwimer/docker-swarm-autoscaler.git
  cd docker-swarm-autoscaler
  docker stack deploy -c swarm-autoscaler-stack.yml autoscaler
